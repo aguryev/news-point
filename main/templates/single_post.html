@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ {{ newspost.title }}
+{% endblock %}
+
+{% block content %}
+
+<h3 class="header">{{ newspost.title }}</h3>
+<small>
+	{{ newspost.posted }}
+</small>
+<div>
+	{{ newspost.text|safe }}
+</div>
+<hr>
+<h4>Comments:</h4>
+{% if comments %}
+	{% for comment in comments %}
+	<div class="border">
+		<strong>{{ comment.author.username }}</strong></br>
+		<small>{{ comment.posted }}</small></br>
+		{{ comment.text }}
+	</div>
+	{% endfor %}
+{% else %}
+	No comments yet...
+{% endif %}
+
+{% if user.is_authenticated %}
+<form method="post">
+	{% csrf_token %}
+	{{ form.text }}
+	<div>
+		<button type="submit">Add Comment</button>
+	</div>
+</form>
+{% endif %}
+
+
+{% endblock %}

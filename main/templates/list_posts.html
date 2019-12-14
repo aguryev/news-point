@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ Home
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<p>
+	<a href="/addpost/">Add a new post</a>
+</p>
+{% endif %}
+
+{% if posts %}
+	{% for p in posts %}
+	<a href="/post/{{p.id}}/">
+		<div class="shadow p-3 mb-5 bg-white rounded">
+			<h4>{{ p.title }}</h4>
+			{{ p.posted }}
+		</div>
+	</a>
+	{% endfor %}
+{% else %}
+	<h4 class="header">Sorry, there is no post available now((</h4>
+{% endif %}
+
+{% endblock %}

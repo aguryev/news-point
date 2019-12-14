@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ Add News Post
+{% endblock %}
+
+{% block content %}
+<h4 style="text-align: center;">Add New Post</h4>
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	{% for field in form %}
+		{% for error in field.errors %}
+			<p style="color:red; font-size:11px;">
+				{{ error }}
+			</p>
+		{% endfor %}
+		<p>
+			{{field.label_tag}} {{field|safe}}
+		</p>
+	{% endfor %}
+	<div style="align-content: center;">
+		<button type="submit">Add Post</button>
+	</div>
+</form>
+
+{% endblock %}

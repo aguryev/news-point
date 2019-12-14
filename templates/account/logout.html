@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ Register
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<h3 style="text-align: center;">Logout</h3>
+<p>Confirm logout</p>
+<form method="post">
+	{% csrf_token %}
+	<button type="submit">Logout</button>
+</form>
+
+{% endblock %}
