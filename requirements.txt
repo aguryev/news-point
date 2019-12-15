@@ -1,5 +1,9 @@
 django>=2.2.5
+dj-database-url>=0.5.0
+whitenoise>=5.0.1
 django-allauth>=0.40.0
 django-anymail[mailgun]>=7.0.0
+django-tinymce4-lite>=1.7.5 
 celery>=4.3.0
+gunicorn>=19.9.0
 

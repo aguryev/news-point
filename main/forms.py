@@ -22,8 +22,9 @@ class RegistrationForm(forms.Form):
 		user.groups.add(Group.objects.get(name='users'))
 		user.save()
 		# store birthday to UserInfo object
-		user.userinfo.birthday = self.cleaned_data['birthday']
-		user.userinfo.save()
+		if self.cleaned_data['birthday']:
+			user.userinfo.birthday = self.cleaned_data['birthday']
+			user.userinfo.save()
 
 
 class NewsPostForm(forms.ModelForm):
