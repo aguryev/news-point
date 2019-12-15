@@ -29,8 +29,6 @@ DEBUG = int(os.environ.get('DEBUG', default=0))
 ALLOWED_HOSTS = ['127.0.0.1', 'news-point.herokuapp.com']
 
 
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -164,9 +162,10 @@ ACCOUNT_LOGOUT_REDIRECT_URL = 'main:index'
 
 ANYMAIL = {
     'MAILGUN_API_KEY': os.environ.get('MAILGUN_API_KEY'),
+    'MAILGUN_SENDER_DOMAIN': os.environ.get('MAILGUN_DOMAIN'),
     }
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+DEFAULT_FROM_EMAIL = os.environ.get('MAILGUN_SMTP_LOGIN')
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
