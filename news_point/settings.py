@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', default='S3KR3T')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 1#int(os.environ.get('DEBUG', default=0))
+DEBUG = int(os.environ.get('DEBUG', default=0))
 
 ALLOWED_HOSTS = ['127.0.0.1', 'news-point.herokuapp.com']
 
@@ -206,8 +206,6 @@ TINYMCE_DEFAULT_CONFIG = {
     }
 
 # redis-celery settings 
-REDIS_HOST = 'localhost'
-REDIS_PORT = '6379'
-BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+BROKER_URL = os.environ.get('REDIS_URL')
 BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600} 
-CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL')
